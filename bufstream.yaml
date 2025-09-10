@@ -1,0 +1,12 @@
+data_enforcement:
+  schema_registries:
+    - name: csr
+      confluent:
+        url: buf.build/jigljigl/bufstream-test
+  produce:
+    - schema_registry: csr
+      values:
+        coerce: true
+        on_parse_error: REJECT_BATCH
+        validation:
+          on_error: REJECT_BATCH
